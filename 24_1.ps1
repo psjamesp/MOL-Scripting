@@ -3,8 +3,7 @@ function Get-DiskInfo {
       $hosts = Get-ADDomainController -filter * -server $domain | 
       Sort-Object -Prop hostname
       ForEach ($h   in $hosts) { 
-       $cs = Get-CimInstance -ClassName Win32_ComputerSystem `
-                            # -ComputerName $h
+       $cs = Get-CimInstance -ClassName Win32_ComputerSystem -ComputerName $h
        $props = @{'ComputerName' = $h
                   'DomainController' = $h
                   'Manufacturer' = $cs.manufacturer
