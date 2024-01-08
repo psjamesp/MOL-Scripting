@@ -1,9 +1,9 @@
-$conn_string = 
-å "Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"  #A
+$conn_string = "Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"  #A
 $conn = New-Object System.Data.SqlClient.SqlConnection         #B
 $conn.ConnectionString = $conn_string                          #C
 $conn.Open()
-$sql = @"                              #D
+#D
+$sql = @"                              
 CREATE DATABASE Scripting; 
 "@
 $cmd = New-Object System.Data.SqlClient.SqlCommand          #E

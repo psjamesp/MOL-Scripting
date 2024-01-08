@@ -5,8 +5,7 @@ function New-DiskInfoSQLTable {
     $conn.ConnectionString = $DiskInfoSqlConnection
     $conn.Open()
     $sql = @"
-        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='diskinfo' AND 
- xtype='U')
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='diskinfo' AND xtype='U')
             CREATE TABLE diskinfo (
                 ComputerName VARCHAR(64),
                 DiskSize BIGINT,
@@ -22,7 +21,6 @@ DateAdded DATETIME2
     $cmd.ExecuteNonQuery() | Out-Null
     $conn.Close()
 }
-$DiskInfoSqlConnection = 
- "Server=localhost\SQLEXPRESS;Database=Scripting;Trusted_Connection=True;"
+$DiskInfoSqlConnection = "Server=localhost\SQLEXPRESS;Database=Scripting;Trusted_Connection=True;"
 Export-ModuleMember -Function Get-DiskInfo
 Export-ModuleMember -Variable DiskInfoSqlConnection
